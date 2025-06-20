@@ -21,8 +21,8 @@ rewards point if the player has a pair of 2 or 3 within their hand.
 
         System.out.println("Total points: " + playerPoints);
 
-
-   public static boolean checkFor3Kind() {
+    //checking for 3 of a kinda during this iteration 
+    public static boolean checkFor3Kind() {
         for (int i = 0; i < playerCards.size(); i++) {
             int count = 1;
             for (int j = 0; j < playerCards.size(); j++) {
