@@ -16,6 +16,7 @@ public class CardGame {
 	//these are our data structures to hold our cards
 	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
 	private static ArrayList<Card> playerCards = new ArrayList<Card>();
+	private static int playerPoints = 0; // Point system for the player
 
 
 	public static void main(String[] args) {
@@ -39,48 +40,40 @@ public class CardGame {
 
 		shuffle();
 
-		//for(Card c: deckOfCards)
-			//System.out.println(c);
+		// deal the player 5 cards (always remove from index 0 to avoid skipping cards)
+        for(int i = 0; i < 5; i++) {
+            playerCards.add(deckOfCards.remove(0));
+        }
+        
+        System.out.println("players cards");
+        for(Card c: playerCards)
+            System.out.println(c);
 
-		//deal the player 5 cards
-		for(int i = 0; i < 4; i++) {
-			playerCards.add(deckOfCards.remove(i));
-		}
-		
-		System.out.println("players cards");
-		for(Card c: playerCards)
-			System.out.println(c);
+        // Award points for pairs
+        if (checkFor2Kind()) {
+            playerPoints += 10; // Example: 10 points for a pair
+            System.out.println("You got a pair! +10 points");
+        }
 
-		System.out.println("pairs is " + checkFor2Kind());
+        System.out.println("Total points: " + playerPoints);
 
-	}//end main
+    }//end main
 
-	public static void shuffle() {
-		// Use Collections.shuffle for a more efficient and standard shuffle
-		Collections.shuffle(deckOfCards);
-	}
+    public static void shuffle() {
+        Collections.shuffle(deckOfCards);
+    }
 
-	//check for 2 of a kind in the players hand
-	public static boolean checkFor2Kind() {
-
-		int count = 0;
-		for(int i = 0; i < playerCards.size() - 1; i++) {
-			Card current = playerCards.get(i);
-			Card next = playerCards.get(i+1);
-			
-			for(int j = i+1; j < playerCards.size(); j++) {
-				next = playerCards.get(j);
-				//System.out.println(" comparing " + current);
-				//System.out.println(" to " + next);
-				if(current.equals(next))
-					count++;
-			}//end of inner for
-			if(count == 1)
-				return true;
-
-		}//end outer for
-		return false;
-	}
+    //check for 2 of a kind in the players hand
+    public static boolean checkFor2Kind() {
+        for (int i = 0; i < playerCards.size(); i++) {
+            for (int j = i + 1; j < playerCards.size(); j++) {
+                // Compare ranks for pairs
+                if (playerCards.get(i).getRank().equals(playerCards.get(j).getRank()))
+                    return true;
+            }
+        }
+        return false;
+    }
 }//end class
 
 
