@@ -1,12 +1,19 @@
-package cardGame;
+//Jose Giovanni Tapia Lopez
+//June 20 2025
+//Card game with OOD
+
+
+// package cardGame;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class CardGame {
 
+	//these are our data structures to hold our cards
 	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
 	private static ArrayList<Card> playerCards = new ArrayList<Card>();
 
@@ -49,14 +56,8 @@ public class CardGame {
 	}//end main
 
 	public static void shuffle() {
-
-		//shuffling the cards by deleting and reinserting
-		for (int i = 0; i < deckOfCards.size(); i++) {
-			int index = (int) (Math.random()*deckOfCards.size());
-			Card c = deckOfCards.remove(index);
-			//System.out.println("c is " + c + ", index is " + index);
-			deckOfCards.add(c);
-		}
+		// Use Collections.shuffle for a more efficient and standard shuffle
+		Collections.shuffle(deckOfCards);
 	}
 
 	//check for 2 of a kind in the players hand
@@ -81,3 +82,5 @@ public class CardGame {
 		return false;
 	}
 }//end class
+
+
