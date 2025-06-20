@@ -4,6 +4,9 @@
 
 //Card game with OOD
 
+//The program is able run and identify pairs and three of a kind in a player's hand and while providng points to the player
+//While outputting the players hand showing the suit, rank, and value of the cards pulled.
+
 
 // package cardGame;
 
