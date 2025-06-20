@@ -74,6 +74,8 @@ public class CardGame {
 
     }
 
+    //uodated the shuffle method to shuffle the deck of cards making it more readabke and efficient compared
+    // to the previous version.
     public static void shuffle() {
         Collections.shuffle(deckOfCards); //a manner of shuffling the deck of cards
     }
